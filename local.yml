@@ -4,6 +4,49 @@
   become: true
 
   tasks:
-  - name: install  htop
+  - name: install packages
     package:
-      name: htop
+      name:
+        - python3-psutil
+        - htop
+        - tmux
+        - neovim
+        - mixxx
+        - ninja-build
+        - wine
+        - cmake
+        - make
+        - gcc
+        - git
+        - qt5-default
+        - libudev-dev
+        - build-essential
+        - libjack-jackd2-dev
+        - libsndfile1-dev
+        - libfftw3-dev
+        - libxt-dev
+        - libavahi-client-dev
+        - libasound2-dev
+        - libicu-dev
+        - libreadline6-dev
+        - libudev-dev
+        - pkg-config
+        - libncurses5-dev
+
+  - name: copy wallpaper file
+    copy:
+      src: files/wallpaper.png
+      dest: /usr/share/backgrounds/vim_cheatsheet.png
+      owner: root
+      group: root
+
+  - name: set wallpaper
+    dconf:
+      key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///usr/share/backgrounds/vim_cheatsheet.png'"
+
+  - name: set wallpaper position
+    dconf:
+      become_user: skmecs 
+      key: "/org/gnome/desktop/background/picture-options"
+      value: "'zoom'"
