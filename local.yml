@@ -1,8 +1,11 @@
 ---
-- hosts: all
+- hosts: hosts
   become: true
-  pre-tasks:
 
+  var_files:
+    - vars.yml
+
+  tasks:
   - name: install updates
     package:
       upgrade: dist
@@ -13,40 +16,12 @@
 - hosts: Avell_in_Popoloninnis
   become: true
   connection: local
-  var:
-    package_names:
-      - python3-psutil
-      - htop
-      - tmux
-      - neovim
-      - mixxx
-      - ninja-build
-      - wine
-      - cmake
-      - make
-      - gcc
-      - git
-      - qt5-default
-      - libudev-dev
-      - build-essential
-      - libjack-jackd2-dev
-      - libsndfile1-dev
-      - libfftw3-dev
-      - libxt-dev
-      - libavahi-client-dev
-      - libasound2-dev
-      - libicu-dev
-      - libreadline6-dev
-      - libudev-dev
-      - pkg-config
-      - libncurses5-dev
-
   tasks:
 
   - name: install packages
     tags: livecoding
-    package:
-      name:
+    ansible.builtin.apt:
+      name: "{{ package_names }}"
       state: latest
     # when: ansible_distribution in ["Debian", "Ubuntu"]
 

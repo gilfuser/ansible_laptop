@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: install packages
+    ansible.builtin.apt:
+      name: [ python3-psutil, htop, tmux, neovim, mixxx, wine, cmake, make, gcc, git, libudev-dev, libjack-jackd2-dev, libsndfile1-dev, libxt-dev, libavahi-client-dev, libicu-dev, libreadline6-dev, pkg-config, libncurses5-dev ]
+      state: latest
+    # when: ansible_distribution in ["Debian", "Ubuntu"]
+
