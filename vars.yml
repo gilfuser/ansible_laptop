@@ -1,2 +1,0 @@
-  package_names: [ python3-psutil, htop, tmux, neovim, mixxx, nibuild, wine, cmake, make, gcc, git, default, libudev-dev, buessential, libjack-jackd2-dev, libsndfile1-dev, libffdev, libxt-dev, libavahi-client-dev, libasoudev, libicu-dev, libreadline6-dev, libudev, pkg-config, libncurses5-dev ]
-

@@ -4,17 +4,17 @@
   become: true
   tasks:
 
-  - name: install updates
-    tags: always
-    ansible.builtin.apt:
-      update_cache: yes
-      changed_when: false
+  # - name: install updates
+    # tags: always
+    # ansible.builtin.apt:
+      # update_cache: yes
+      # changed_when: false
     # when: ansible_os_family == "Debian"
 
-  - name: install packages
-    ansible.builtin.apt:
-      name: [ ansible python3-psutil, htop, tmux, neovim, mixxx, wine, cmake, make, gcc, git, libudev-dev, libjack-jackd2-dev, libsndfile1-dev, libxt-dev, libavahi-client-dev, libicu-dev, libreadline6-dev, pkg-config, libncurses5-dev ]
-      state: latest
+  # - name: install packages
+    # ansible.builtin.apt:
+      # name: [ ansible python3-psutil, htop, tmux, neovim, mixxx, wine, cmake, make, gcc, git, libudev-dev, libjack-jackd2-dev, libsndfile1-dev, libxt-dev, libavahi-client-dev, libicu-dev, libreadline6-dev, pkg-config, libncurses5-dev ]
+      # state: latest
     # when: ansible_os_family == "Debian"
 
   - name: copy wallpaper file
