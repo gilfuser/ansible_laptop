@@ -3,9 +3,39 @@
   become: true
   tasks:
 
+  - name: install updates
+    tags: always
+    ansible.builtin.apt:
+      update_cache: yes
+      changed_when: false
+    # when: ansible_os_family == "Debian"
+
   - name: install packages
     ansible.builtin.apt:
       name: [ python3-psutil, htop, tmux, neovim, mixxx, wine, cmake, make, gcc, git, libudev-dev, libjack-jackd2-dev, libsndfile1-dev, libxt-dev, libavahi-client-dev, libicu-dev, libreadline6-dev, pkg-config, libncurses5-dev ]
       state: latest
-    # when: ansible_distribution in ["Debian", "Ubuntu"]
+    # when: ansible_os_family == "Debian"
+
+  - name: Install python-psutil package
+    apt: name=python3-psutil
+
+  - name: copy wallpaper file
+    ansible.builtin.copy:
+      src: ouroboro2.jpg
+      dest: /home/skmecs/ouroboro2.jpg
+      # owner: root
+      # group: root
+      # mode: 600
+
+  # - name: set wallpaper
+  #   become_user: root
+  #   dconf:
+  #     key: "/org/gnome/desktop/background/picture-uri"
+  #     value: "'file:///home/skmecs/ouroboro2.jpg'"
+
+  # - name: set wallpaper position
+  #   # become_user: root
+  #   dconf:
+  #     key: "/org/gnome/desktop/background/picture-options"
+  #     value: "'zoomed'"
 
